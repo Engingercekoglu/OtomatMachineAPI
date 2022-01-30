@@ -120,7 +120,7 @@ namespace OtomatMachineIntegrationTest
         [Fact]
         public async Task Delete_PaymentType_IsSuccess()
         {
-            var response = await _client.PostAsync(applicationUrl + "api/PaymentType/DeletePaymentTye"
+            var response = await _client.PostAsync(applicationUrl + "api/PaymentType/DeletePaymentType"
                  , new StringContent(
                  JsonConvert.SerializeObject(new DeletePaymentTypeDTO()
                  {
@@ -140,7 +140,7 @@ namespace OtomatMachineIntegrationTest
         public async Task Delete_PaymentType_IsFail()
         {
 
-            var response = await _client.PostAsync(applicationUrl + "api/PaymentType/DeletePaymentTye"
+            var response = await _client.PostAsync(applicationUrl + "api/PaymentType/DeletePaymentType"
                  , new StringContent(
                  JsonConvert.SerializeObject(new DeletePaymentTypeDTO()
                  {

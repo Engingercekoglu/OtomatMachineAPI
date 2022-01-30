@@ -32,9 +32,9 @@ namespace OtomatMachineAPI.Controllers
             return Ok(result);
         }
         [HttpPost]       
-        public async Task<IActionResult> DeletePaymentTye([FromBody] DeletePaymentTypeDTO paymentTypeDTO)
+        public async Task<IActionResult> DeletePaymentType([FromBody] DeletePaymentTypeDTO paymentTypeDTO)
         {
-            _logger.LogInformation("DeletePaymentTye çalıştı.", paymentTypeDTO);
+            _logger.LogInformation("DeletePaymentType çalıştı.", paymentTypeDTO);
             var result = await _paymentTypeService.DeleteAsync(paymentTypeDTO.Id);
             
             return Ok(result);
