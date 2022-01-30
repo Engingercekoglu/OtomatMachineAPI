@@ -58,7 +58,7 @@ namespace OtomatMachineIntegrationTest
              "application/json"));
             var result = DeserializeJsonFromStream(await response.Content.ReadAsStreamAsync());
 
-            Assert.True(result.resultStatus.ToString() == ((int)ResultStatus.Error).ToString());
+            Assert.True(result.resultStatus.ToString() == ((int)ResultStatus.Warning).ToString());
 
 
         }
@@ -79,7 +79,7 @@ namespace OtomatMachineIntegrationTest
              "application/json"));
             var result = DeserializeJsonFromStream(await response.Content.ReadAsStreamAsync());
 
-            Assert.True(result.message = "Seçtiğiniz ödeme tipi  sistemde mevcut değil");
+            Assert.True(result.message.ToString() == "Seçtiğiniz ödeme tipi  sistemde mevcut değil");
 
 
         }
@@ -124,8 +124,8 @@ namespace OtomatMachineIntegrationTest
              Encoding.UTF8,
              "application/json"));
             var result = DeserializeJsonFromStream(await response.Content.ReadAsStreamAsync());
+            Assert.True(result.resultStatus.ToString() == ((int)ResultStatus.Success).ToString());
 
-            Assert.True(result.resultstatus.ToString() == "0");
 
 
         }
@@ -188,7 +188,7 @@ namespace OtomatMachineIntegrationTest
              "application/json"));
             var result = DeserializeJsonFromStream(await response.Content.ReadAsStreamAsync());
 
-            Assert.True(result.resultstatus.ToString()=="0");
+            Assert.True(result.resultStatus.ToString() == ((int)ResultStatus.Success).ToString());
 
 
         }
@@ -208,7 +208,7 @@ namespace OtomatMachineIntegrationTest
              "application/json"));
             var result = DeserializeJsonFromStream(await response.Content.ReadAsStreamAsync());
 
-            Assert.True(result.resultstatus.ToString() == "0");
+            Assert.True(result.resultStatus.ToString() == ((int)ResultStatus.Success).ToString());
 
 
         }
@@ -230,7 +230,7 @@ namespace OtomatMachineIntegrationTest
              "application/json"));
             var result = DeserializeJsonFromStream(await response.Content.ReadAsStreamAsync());
 
-            Assert.True(result.message = "Seçtiğiniz ürün  sistemde mevcut değil");
+            Assert.True(result.message.ToString() == "Seçtiğiniz ürün  sistemde mevcut değil");
 
 
         }
@@ -252,7 +252,7 @@ namespace OtomatMachineIntegrationTest
              "application/json"));
             var result = DeserializeJsonFromStream(await response.Content.ReadAsStreamAsync());
 
-            Assert.True(result.resultstatus.ToString() == "0");
+            Assert.True(result.resultStatus.ToString() == ((int)ResultStatus.Success).ToString());
 
 
         }
@@ -273,7 +273,7 @@ namespace OtomatMachineIntegrationTest
              "application/json"));
             var result = DeserializeJsonFromStream(await response.Content.ReadAsStreamAsync());
 
-            Assert.True(result.message = "Sıcak içecek olduğundan şeker adet seçimi yapılmalıdır.");
+            Assert.True(result.message.ToString() == "Sıcak içecek olduğundan şeker adet seçimi yapılmalıdır.");
 
 
         }
@@ -294,7 +294,7 @@ namespace OtomatMachineIntegrationTest
              "application/json"));
             var result = DeserializeJsonFromStream(await response.Content.ReadAsStreamAsync());
 
-            Assert.True(result.resultstatus.ToString() == "0");
+            Assert.True(result.resultStatus.ToString() == ((int)ResultStatus.Success).ToString());
 
 
         }
@@ -316,7 +316,7 @@ namespace OtomatMachineIntegrationTest
              "application/json"));
             var result = DeserializeJsonFromStream(await response.Content.ReadAsStreamAsync());
 
-            Assert.True(result.message = "Sıcak içecek dışında şeker adet seçimi yapılmamalıdır.Lütfen kontrol edin!");
+            Assert.True(result.message.ToString() == "Sıcak içecek dışında şeker adet seçimi yapılmamalıdır.Lütfen kontrol edin!");
 
 
         }

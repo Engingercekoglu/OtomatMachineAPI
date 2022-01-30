@@ -58,6 +58,24 @@ namespace OtomatMachine.Bussiness.Services.ReceiptTransaction
                     });
 
                 }
+                paymenttype = await _paymentTypeRepository.GetByParam(a => a.Id == receiptTransaction.PaymentTypeId);
+                if (paymenttype == null)
+                {
+                    _logger.LogError("ReceiptTransactionService.AddAsync Seçtiğiniz ödeme tipi  sistemde mevcut değil.{@receiptTransactionProductIdPaymentTypeId}", receiptTransaction.PaymentTypeId);
+
+                    return new DataResult<ReceiptTransactionResponseDTO>(ResultStatus.Error, "Seçtiğiniz ödeme tipi  sistemde mevcut değil", new ReceiptTransactionResponseDTO
+                    {
+                        PaymentTypeName = "",
+                        ProductCount = receiptTransaction.ProductCount,
+                        ReceiptTransactionId = -1,
+                        ProductName = product?.Name,
+                        RefundedAmount = 0
+                        ,
+                        TotalPrice = 0,
+                        SugarCount = receiptTransaction.SugarCount
+                    });
+
+                }
                 decimal totalPrice = product.Price * receiptTransaction.ProductCount;
                 decimal refundedAmount = receiptTransaction.PaymentAmount == 0 ? 0 : (totalPrice < receiptTransaction.PaymentAmount ? receiptTransaction.PaymentAmount - totalPrice : 0);
                 var errorReceiptItem = new ReceiptTransactionResponseDTO
@@ -74,24 +92,7 @@ namespace OtomatMachine.Bussiness.Services.ReceiptTransaction
                 try
                 {
 
-                    paymenttype = await _paymentTypeRepository.GetByParam(a => a.Id == receiptTransaction.PaymentTypeId);
-                    if (paymenttype == null)
-                    {
-                        _logger.LogError("ReceiptTransactionService.AddAsync Seçtiğiniz ödeme tipi  sistemde mevcut değil.{@receiptTransactionProductIdPaymentTypeId}", receiptTransaction.PaymentTypeId);
-
-                        return new DataResult<ReceiptTransactionResponseDTO>(ResultStatus.Error, "Seçtiğiniz ödeme tipi  sistemde mevcut değil", new ReceiptTransactionResponseDTO
-                        {
-                            PaymentTypeName = paymenttype.Name,
-                            ProductCount = receiptTransaction.ProductCount,
-                            ReceiptTransactionId = -1,
-                            ProductName = product?.Name,
-                            RefundedAmount = 0
-                            ,
-                            TotalPrice = 0,
-                            SugarCount = receiptTransaction.SugarCount
-                        });
-
-                    }
+                
                     if (paymenttype.IsCard && receiptTransaction.PaymentAmount > 0)
                     {
                         _logger.LogWarning("ReceiptTransactionService.AddAsync Ödeme tipi  kartlı ödeme olduğundan servis tarafına  tutar gönderilmemelidir.Girilen Tutar.{@receiptTransactionPaymentAmount}", receiptTransaction.PaymentAmount);

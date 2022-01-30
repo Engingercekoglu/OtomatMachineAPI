@@ -140,7 +140,7 @@ namespace OtomatMachineIntegrationTest
         public async Task Delete_ProductType_PassiveNotDeleted()
         {
 
-            var response = await _client.PostAsync(applicationUrl + "api/Product/DeleteProductType"
+            var response = await _client.PostAsync(applicationUrl + "api/ProductType/DeleteProductType"
                  , new StringContent(
                  JsonConvert.SerializeObject(new DeleteProductTypeDTO()
                  {
