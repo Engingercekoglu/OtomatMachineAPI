@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Repositories\BookCheckOutHistory\**" />
+    <Compile Remove="Repositories\Person\**" />
+    <Compile Remove="Services\BookCheckOutHistoryService\**" />
+    <Compile Remove="Services\CategoryService\**" />
+    <Compile Remove="Services\PersonService\**" />
+    <EmbeddedResource Remove="Repositories\BookCheckOutHistory\**" />
+    <EmbeddedResource Remove="Repositories\Person\**" />
+    <EmbeddedResource Remove="Services\BookCheckOutHistoryService\**" />
+    <EmbeddedResource Remove="Services\CategoryService\**" />
+    <EmbeddedResource Remove="Services\PersonService\**" />
+    <None Remove="Repositories\BookCheckOutHistory\**" />
+    <None Remove="Repositories\Person\**" />
+    <None Remove="Services\BookCheckOutHistoryService\**" />
+    <None Remove="Services\CategoryService\**" />
+    <None Remove="Services\PersonService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OtomatMachine.Entity\OtomatMachine.Entity.csproj" />
+  </ItemGroup>
+
+</Project>
