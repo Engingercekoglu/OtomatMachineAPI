@@ -52,5 +52,5 @@ ReceiptTransactionController:AddReceiptTransaction,GetReceiptTransactionList
 #OtomatMachineIntegrationTest
 Entegrasyon testlerini yazdığım katman.
 
-
+PaymentTypeControllerTest,ProductControllerTest,ProductTypeControllerTest,ReceiptTransactionControllerTest
 
